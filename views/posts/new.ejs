@@ -5,15 +5,38 @@
     <p>Post about your recent adventures</p>
 
     <h2>Recent Posts</h2>
-    <%= posts.forEach(t) %>
-
+    <% if (posts.length) %>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Post</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% posts.forEach(function(p) { %>
+             <tr>
+                <th><img alt="avatar" src="<%= p.userAvatar %>" referrerpolicy="no-referrer" ><%= p.userName %></th>
+                <th><%= p.createdAt.toLocaleDateString() %></th>
+                <th><%= p.title %></th>
+                <th><%= p.content %></th>
+             </tr>
+            <% }); %>
+        </tbody>
+    </table>
     <form action="/posts/new" method="POST">
         <label>Title</label>
         <input type="text" name="title">
         <label>Post</label>
         <input type="text" name="content">
-        <button type="submit" value="Add Post">Submit</button>
+        <button type="submit" value="Add Post" onclick="playSound()">Submit</button>
     </form>
+
+    <script>
+    let playSound = () => new Audio("/sounds/sound-fx-taco-bell_E_major.wav").play()
+    </script>
 
 
 <%- include('../partials/footer') %>

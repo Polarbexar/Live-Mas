@@ -1,12 +1,15 @@
 const Post = require('../models/post');
+const { post } = require('../routes');
 
 module.exports = {
     index,
     create
 };
 
-function index(req, res) {
-    res.render('posts/new', {title: 'Start the Discussion' });
+function index(req, res, posts) {
+    Post.find({}, function(err, posts) {
+    res.render('posts/new', {title: 'Start the Discussion', posts });
+    })
 };
 
 function create(req, res) {

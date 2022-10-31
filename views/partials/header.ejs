@@ -6,7 +6,9 @@
   </head>
   <body>
     <nav>
-      <a href="/" <%- title === 'Home Page' ? 'class="active"' : '' %>>Home</a>
+      <a href="/" <%- title === 'Home Page' ? 'class="active"' : '' %>>
+        <img src="/images/TB-Logo.svg" width="100px" height="100px" alt="">
+      </a>
       <% if (user) { %>
         <a href="/posts" <%- title === 'Chat' ? 'class="active"' : '' %>>
             Chat</a>
