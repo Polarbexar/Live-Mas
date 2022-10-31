@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+
+    <h1><%= title %></h1>
+    <p>Post about your recent adventures</p>
+
+    <h2>Recent Posts</h2>
+    <%= posts.forEach(t) %>
+
+    <form action="/posts/new" method="POST">
+        <label>Title</label>
+        <input type="text" name="title">
+        <label>Post</label>
+        <input type="text" name="content">
+        <button type="submit" value="Add Post">Submit</button>
+    </form>
+
+
+<%- include('../partials/footer') %>

@@ -1,10 +1,10 @@
-// const User = require('../models/user')
+const User = require('../models/user')
 
-// module.exports = {
-//     index,
-// }
+module.exports = {
+    index,
+}
 
-// function index(req, res) {
-//     res.render('users/index', { title: 'Your Page'})
-// };
+function index(req, res) {
+    res.render('users/index', { title: 'Your Page'})
+};
 
