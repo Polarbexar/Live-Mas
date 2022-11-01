@@ -10,5 +10,41 @@
 </section>
 
 <h1>comment on a post</h1>
-<form action=""></form>
+<form action="/posts/<%= post._id %>/comments"  method="POST">
+    <textarea name="content" id="" cols="30" rows="10" value="Add your comment"></textarea>
+    <button>submit</button>
+</form>
+
+<% if (post.comments.length) { %>
+<table>
+<thead>
+<tr>
+    <th>User</th>
+    <th>Date</th>
+    <th>Comment</th>
+    <th></th>
+</tr>
+</thead>
+<tbody>
+    <% post.comments.forEach(function(c) { %>
+    <tr>
+        <td><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
+        <td><%= c.createdAt.toLocaleDateString()%></td>
+        <td><%- c.content.replaceAll('\n', '<br>') %></td>
+        <td>
+            <% if (user?._id.equals(c.user)) { %>
+                <form action="/posts/ {<%= c._id%>}?_method=DELETE" method="POST">
+                <button type="submit"><img src="/images/Trashcan.png" 
+                    alt="Trashcan" width="30px" height="30px">
+                </button>
+                </form>
+                <% } %>
+        </td>
+    </tr>
+    <% }); %>
+</tbody>
+</table>
+<% } else { %>
+    <h5>No Comments Yet</h5>
+<% } %>
 <%- include('../partials/footer') %>
