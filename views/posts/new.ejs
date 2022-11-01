@@ -13,6 +13,7 @@
                 <th>Date</th>
                 <th>Title</th>
                 <th>Post</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -21,7 +22,8 @@
                 <th><img alt="avatar" src="<%= p.userAvatar %>" referrerpolicy="no-referrer" ><%= p.userName %></th>
                 <th><%= p.createdAt.toLocaleDateString() %></th>
                 <th><%= p.title %></th>
-                <th><%= p.content %></th>
+                <th><%- p.content.replaceAll('\n', '<br>') %></th>
+                <th><a href="/posts/<%= p._id %>">Comment</a></th>
              </tr>
             <% }); %>
         </tbody>
@@ -30,7 +32,7 @@
         <label>Title</label>
         <input type="text" name="title">
         <label>Post</label>
-        <input type="text" name="content">
+        <textarea name="content" id="" cols="30" rows="10"></textarea>
         <button type="submit" value="Add Post" onclick="playSound()">Submit</button>
     </form>
 

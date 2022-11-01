@@ -9,6 +9,9 @@ var postCntrl = require('../controllers/posts')
 router.get('/', postCntrl.index);
 
 //Post /posts Add Post
-router.post('/new', postCntrl.create)
+router.post('/new', postCntrl.create);
+
+// get /posts/:id Page for Comments
+router.get('/:id', postCntrl.show);
 
 module.exports = router;
