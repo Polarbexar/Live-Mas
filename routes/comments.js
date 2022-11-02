@@ -5,10 +5,10 @@ var ensureLoggedIn = require('../config/ensureLoggedIn');
 var commentsCtrl = require('../controllers/comments')
 
 //Post posts/:id - Add comment
-router.post('/posts/:id/comments', commentsCtrl.create);
-
-router.delete('/comments/:id', commentsCtrl.delete);
-
+router.post('/posts/:id/comments', ensureLoggedIn, commentsCtrl.create);
+//Delete comments/:id - Delete comment
+router.delete('/comments/:id', ensureLoggedIn, commentsCtrl.delete);
+//Put /comments/:id - Edit Comment
 
 
 module.exports = router;

@@ -23,6 +23,7 @@
     <th>Date</th>
     <th>Comment</th>
     <th></th>
+    <th></th>
 </tr>
 </thead>
 <tbody>
@@ -39,6 +40,15 @@
                 </button>
                 </form>
                 <% } %>
+        </td>
+        <td>
+            <% if (user?._id.equals(c.user)) { %>
+                <form action="/comments/<%= c._id%>?_method=PUT" method="POST">
+               <textarea name="content" value="<%= comment.content %>" cols="30" rows="10"></textarea>
+                </button>
+                </form>
+                <% } %>
+
         </td>
     </tr>
     <% }); %>

@@ -9,12 +9,12 @@ var postCntrl = require('../controllers/posts')
 router.get('/', postCntrl.index);
 
 //Post /posts Add Post
-router.post('/new', postCntrl.create);
+router.post('/new', ensureLoggedIn, postCntrl.create);
 
 // get /posts/:id Page for Comments
 router.get('/:id', postCntrl.show);
 
 // delete posts/:id Delete Post
-router.delete('/:id', postCntrl.delete);
+router.delete('/:id', ensureLoggedIn, postCntrl.delete);
 
 module.exports = router;
