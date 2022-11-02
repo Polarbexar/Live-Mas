@@ -24,8 +24,8 @@
                 <th><%= p.createdAt.toLocaleDateString() %></th>
                 <th><%= p.title %></th>
                 <th><%- p.content.replaceAll('\n', '<br>') %></th>
-                <% if (user?._id.equals(p.user)) { %>
                 <th><a href="/posts/<%= p._id %>">Comment</a></th>
+                <% if (user?._id.equals(p.user)) { %>
                 <th>
                     <form action="/posts/<%= p._id%>?_method=DELETE" method="POST">
                     <button type="submit"><img src="/images/Trashcan.png" 
@@ -33,6 +33,9 @@
                     </button>
                     </form>
                     <% } %> 
+                </th>
+                <th>  
+                <a href="/posts/<%= p.id %>/edit">Edit/a>
                 </th>
              </tr>
             <% }); %>

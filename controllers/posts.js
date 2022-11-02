@@ -1,3 +1,4 @@
+const { estimatedDocumentCount } = require('../models/post');
 const Post = require('../models/post');
 
 
@@ -5,7 +6,9 @@ module.exports = {
     index,
     create,
     show,
-    delete: deletePost
+    delete: deletePost,
+    edit,
+    update
 };
 
 function index(req, res, posts) {
@@ -38,10 +41,30 @@ function show(req, res) {
 
 function deletePost(req, res) {
     Post.findOneAndDelete(
-      // Ensue that the book was created by the logged in user
       {_id: req.params.id}, function(err) {
-        // Deleted book, so must redirect to index
         res.redirect('/posts');
       }
     );
   }
+
+  function edit(req, res) {
+    Post.findOne({_id: req.params.id}, function(err, post) {
+      if (err || !post) return res.redirect('/posts');
+      res.render('posts/edit', {
+        title: 'post',
+        post
+        });
+    });
+  }
+
+  function update(req, res) {
+  Post.findOneAndUpdate(
+    {_id: req.params.id, user: req.user._id},
+    req.body,
+    {new: true},
+    function(err, post) {
+      if (err || !post) return res.redirect('/posts');
+      res.redirect(`/posts`);
+    }
+  );
+}

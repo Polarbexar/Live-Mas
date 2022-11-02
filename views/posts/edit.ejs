@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<h1><%= title %></h1>
+<h1>Edit a Post</h1>
+
+<h1><%= title %></h1>
+
+<section>
+    <div>Title:</div>
+    <div><%= post.title %></div>
+    <div>Post</div>
+    <div><%= post.content %></div>
+</section>
+
+
+    <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+        <!-- Value attribute is being set to the comment's current text -->
+        <input name="content" value="<%= post.content %>">
+        <button type="submit">UPDATE COMMENT</button>
+      </form>
+
+<%- include('../partials/footer') %>
