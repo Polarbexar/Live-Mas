@@ -33,7 +33,7 @@
         <td><%- c.content.replaceAll('\n', '<br>') %></td>
         <td>
             <% if (user?._id.equals(c.user)) { %>
-                <form action="/posts/ {<%= c._id%>}?_method=DELETE" method="POST">
+                <form action="/comments/<%= c._id%>?_method=DELETE" method="POST">
                 <button type="submit"><img src="/images/Trashcan.png" 
                     alt="Trashcan" width="30px" height="30px">
                 </button>

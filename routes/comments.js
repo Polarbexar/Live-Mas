@@ -5,9 +5,9 @@ var ensureLoggedIn = require('../config/ensureLoggedIn');
 var commentsCtrl = require('../controllers/comments')
 
 //Post posts/:id - Add comment
-router.post('/:id/comments', commentsCtrl.create);
+router.post('/posts/:id/comments', commentsCtrl.create);
 
-router.delete('/:id', commentsCtrl.delete);
+router.delete('/comments/:id', commentsCtrl.delete);
 
 
 

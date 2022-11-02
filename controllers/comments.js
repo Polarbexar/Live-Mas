@@ -22,14 +22,13 @@ function create(req, res) {
 function deleteComment(req, res, next) {
     Post.findOne({
         'comments._id': req.params.id,
-        'comments.user': req.user._id
-    }).then(function (post) {
-        if (!post) return res.redirect('/posts');
+        'comments.userId': req.user._id
+    },
+    function(err, post) {
+        if (!post || err) return res.redirect(`/posts/${post.id}`);
         post.comments.remove(req.params.id);
-        post.save().then(function() {
+        post.save(function(err) {
             res.redirect(`/posts/${post.id}`);
-        }).catch(function() {
-            return next(err);
         })
     })
 }

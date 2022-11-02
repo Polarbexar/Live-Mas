@@ -5,6 +5,7 @@ module.exports = {
     index,
     create,
     show,
+    delete: deletePost
 };
 
 function index(req, res, posts) {
@@ -34,3 +35,13 @@ function show(req, res) {
         });
     });
 };
+
+function deletePost(req, res) {
+    Post.findOneAndDelete(
+      // Ensue that the book was created by the logged in user
+      {_id: req.params.id}, function(err) {
+        // Deleted book, so must redirect to index
+        res.redirect('/posts');
+      }
+    );
+  }

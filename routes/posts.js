@@ -14,4 +14,7 @@ router.post('/new', postCntrl.create);
 // get /posts/:id Page for Comments
 router.get('/:id', postCntrl.show);
 
+// delete posts/:id Delete Post
+router.delete('/:id', postCntrl.delete);
+
 module.exports = router;
