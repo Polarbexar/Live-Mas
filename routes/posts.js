@@ -11,9 +11,10 @@ router.get('/', postCntrl.index);
 //Post /posts Add Post
 router.post('/new', ensureLoggedIn, postCntrl.create);
 
-//PUT /posts/:id/edit
+//GET /posts/:id/edit
 router.get('/:id/edit', ensureLoggedIn, postCntrl.edit)
 
+//PUT /posts/:id - Update Comment
 router.put('/:id', ensureLoggedIn, postCntrl.update)
 
 // get /posts/:id Page for Comments

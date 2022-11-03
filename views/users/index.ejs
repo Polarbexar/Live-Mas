@@ -2,7 +2,33 @@
 
 <h1><%= title %></h1>
 <h1>This is your homepage</h1>
+<h3>Your Recent Posts</h3>
 
-
+<% if (posts.length) { %>
+    <table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Post</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        <% posts.forEach(function(p) { %>
+        <tr>
+            <td><%= c.createdAt.toLocaleDateString()%></td>
+            <td><%- c.content.replaceAll('\n', '<br>') %></td>
+            <td>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+    </table>
+    <% } else { %>
+        <h5>No Posts Yet</h5>
+        <% } %>
+        <%- include('../partials/footer') %>
 
 <%- include('../partials/footer') %>
