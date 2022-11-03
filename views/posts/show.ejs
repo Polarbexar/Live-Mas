@@ -1,32 +1,31 @@
 <%- include('../partials/header') %>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="#exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            ...
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+<body class="show">
+    <nav>
+    <div class="collapse fs-5" id="navbarToggleExternalContent" >
+      <div class="bg-dark p-7">
+        <h5 class="text-white h6">Collapsed content</h5>
+        <span class="text-muted fs-10;" class="navbar-header">Toggleable via the navbar brand.</span>
+        <a href="/">
+          <img src="/images/TB-Logo.svg" width="25px" height="25px" alt="">
+        </a>
+        <% if (user) { %>
+          <a href="/posts" <%- title === 'Chat' ? 'class="active"' : '' %>>Chat</a>
+          <a href="/users">Profile</a>
+          <a href="/logout">LOG OUT</a>
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN <img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+      </div>
     </div>
-</div>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
 
-<h1><%= title %></h1>
-
-<section>
+<section id="show-page">
     <div>Title:</div>
     <div><%= post.title %></div>
     <div>Post</div>
@@ -34,8 +33,8 @@
 </section>
 
 <h1>comment on a post</h1>
-<form action="/posts/<%= post._id %>/comments"  method="POST">
-    <textarea name="content" id="" cols="30" rows="10" value="Add your comment"></textarea>
+<form id="post-form" action="/posts/<%= post._id %>/comments"  method="POST">
+    <textarea name="content" class="form-control border-success" id="" cols="10" rows="5" placeholder="Add your comment"></textarea>
     <button>submit</button>
 </form>
 
@@ -50,12 +49,12 @@
     <th></th>
 </tr>
 </thead>
-<tbody>
+<tbody >
     <% post.comments.forEach(function(c) { %>
-    <tr>
-        <td><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
-        <td><%= c.createdAt.toLocaleDateString()%></td>
-        <td><%- c.content.replaceAll('\n', '<br>') %></td>
+    <tr class="comment-user">
+        <td class="align-baseline"><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" height="40px" ><%= c.userName %></td>
+        <td class="align-text-top"><%= c.createdAt.toLocaleDateString()%></td>
+        <td class="align-middle"><%- c.content.replaceAll('\n', '<br>') %></td>
         <td>
             <% if (user?._id.equals(c.user)) { %>
                 <form action="/comments/<%= c._id%>?_method=DELETE" method="POST">

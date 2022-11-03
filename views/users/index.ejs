@@ -1,34 +1,31 @@
 <%- include('../partials/header') %>
+<body class="">
+    <nav>
+    <div class="collapse fs-5" id="navbarToggleExternalContent" >
+      <div class="bg-dark p-7">
+        <h5 class="text-white h6">Collapsed content</h5>
+        <span class="text-muted fs-10;" class="navbar-header">Toggleable via the navbar brand.</span>
+        <a href="/">
+          <img src="/images/TB-Logo.svg" width="25px" height="25px" alt="">
+        </a>
+        <% if (user) { %>
+          <a href="/posts" <%- title === 'Chat' ? 'class="active"' : '' %>>Chat</a>
+          <a href="/users">Profile</a>
+          <a href="/logout">LOG OUT</a>
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN <img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
 
 <h1><%= title %></h1>
 <h1>This is your homepage</h1>
-<h3>Your Recent Posts</h3>
-
-<% if (posts.length) { %>
-    <table>
-    <thead>
-    <tr>
-        <th></th>
-        <th>Date</th>
-        <th>Post</th>
-        <th></th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-        <% posts.forEach(function(p) { %>
-        <tr>
-            <td><%= c.createdAt.toLocaleDateString()%></td>
-            <td><%- c.content.replaceAll('\n', '<br>') %></td>
-            <td>
-            </td>
-        </tr>
-        <% }); %>
-    </tbody>
-    </table>
-    <% } else { %>
-        <h5>No Posts Yet</h5>
-        <% } %>
-        <%- include('../partials/footer') %>
 
 <%- include('../partials/footer') %>

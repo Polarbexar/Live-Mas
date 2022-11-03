@@ -6,7 +6,7 @@ var postCntrl = require('../controllers/posts')
 
 
 // Get posts
-router.get('/', postCntrl.index);
+router.get('/', ensureLoggedIn, postCntrl.index);
 
 //Post /posts Add Post
 router.post('/new', ensureLoggedIn, postCntrl.create);

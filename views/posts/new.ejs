@@ -1,5 +1,29 @@
 <%- include('../partials/header') %>
-
+<body class=>
+    <nav>
+    <div class="collapse fs-5" id="navbarToggleExternalContent" >
+      <div class="bg-dark p-7">
+        <h5 class="text-white h6">Collapsed content</h5>
+        <span class="text-muted fs-10;" class="navbar-header">Toggleable via the navbar brand.</span>
+        <a href="/">
+          <img src="/images/TB-Logo.svg" width="25px" height="25px" alt="">
+        </a>
+        <% if (user) { %>
+          <a href="/posts" <%- title === 'Chat' ? 'class="active"' : '' %>>Chat</a>
+          <a href="/users">Profile</a>
+          <a href="/logout">LOG OUT</a>
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN <img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
 
     <h1><%= title %></h1>
     <p>Post about your recent adventures</p>
@@ -19,35 +43,39 @@
         </thead>
         <tbody>
             <% posts.forEach(function(p) { %>
-             <tr>
-                <th><img alt="avatar" src="<%= p.userAvatar %>" referrerpolicy="no-referrer" ><%= p.userName %></th>
+             <tr class="form-control border-success" >
+                <div >
+                <th><img alt="avatar" src="<%= p.userAvatar %>" height="20px" referrerpolicy="no-referrer" ><%= p.userName %></th>
                 <th><%= p.createdAt.toLocaleDateString() %></th>
                 <th><%= p.title %></th>
                 <th><%- p.content.replaceAll('\n', '<br>') %></th>
                 <th><a href="/posts/<%= p._id %>">Comment</a></th>
                 <% if (user?._id.equals(p.user)) { %>
-                <th>
-                    <form action="/posts/<%= p._id%>?_method=DELETE" method="POST">
-                    <button type="submit"><img src="/images/Trashcan.png" 
-                        alt="Trashcan" width="30px" height="30px">
+                    <th>
+                        <form action="/posts/<%= p._id%>?_method=DELETE" method="POST">
+                            <button type="submit"><img src="/images/Trashcan.png" 
+                                alt="Trashcan" width="30px" height="30px">
+                    </th>
+                    <th>  
+                        <a href="/posts/<%= p.id %>/edit">Edit
+                        </th>
+                    </div>
+                </tr>
                     </button>
-                    </form>
-                    <% } %> 
-                </th>
-                <th>  
-                <a href="/posts/<%= p.id %>/edit">Edit/a>
-                </th>
-             </tr>
+                </form>
+                <% } %> 
             <% }); %>
         </tbody>
     </table>
-    <form action="/posts/new" method="POST">
+    <div id="post-form" class="mb-4">
+    <form action="/posts/new" class="form-control border-success" width="100px" method="POST">
         <label>Title</label>
-        <input type="text" name="title">
+        <input class="form-control border-success" type="text" name="title">
         <label>Post</label>
-        <textarea name="content" id="" cols="30" rows="10"></textarea>
+        <textarea class="form-control border-success" name="content" id="" cols="30" rows="10"></textarea>
         <button type="submit" value="Add Post" onclick="playSound()">Submit</button>
     </form>
+    </div>
 
     <script>
     let playSound = () => new Audio("/sounds/sound-fx-taco-bell_E_major.wav").play()

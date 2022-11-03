@@ -30,14 +30,14 @@ router.get('/oauth2callback', passport.authenticate(
   'google',
   {
     //this is if the user accepts the auth or denies it.
-    successRedirect: '/users',
-    failureRedirect: '/users'
+    successRedirect: '/',
+    failureRedirect: '/'
   }
 ));
 //LogOut
 router.get('/logout', function(req, res) {
   req.logOut(function() {
-    res.redirect('/users')
+    res.redirect('/')
   });
 
 });

@@ -1,8 +1,95 @@
 <%- include('./partials/header') %>
-
+<body class="index">
+    <nav>
+    <div class="collapse fs-5" id="navbarToggleExternalContent" >
+      <div class="bg-dark p-7">
+        <h5 class="text-white h6">Collapsed content</h5>
+        <span class="text-muted fs-10;" class="navbar-header">Toggleable via the navbar brand.</span>
+        <a href="/">
+          <img src="/images/TB-Logo.svg" width="25px" height="25px" alt="">
+        </a>
+        <% if (user) { %>
+          <a href="/posts" <%- title === 'Chat' ? 'class="active"' : '' %>>Chat</a>
+          <a href="/users">Profile</a>
+          <a href="/logout">LOG OUT</a>
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN <img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
 
     <h1><%= title %></h1>
     <p>Your Tastebuds Salute You</p>
+
+    <section class="articles">
+        <article>
+          <div class="article-wrapper">
+            <figure>
+              <img src="/images/beefy.jpeg" width="400px" height="300px "alt="" />
+            </figure>
+            <div class="article-body">
+              <h2>This Weeks Pick</h2>
+              <p>
+                Cheesy, beefy, tortilla-y. Satisfied?
+              </p>
+              <a href="#" class="read-more">
+                Read more <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+        <article>
+      
+          <div class="article-wrapper">
+            <figure>
+              <img src="/images/fries.jpeg" alt="" />
+            </figure>
+            <div class="article-body">
+              <h2>Nacho Fries are back!</h2>
+              <p>
+               What would you do with unlimited fries? #LetsGetSpicy.
+              </p>
+              <a href="https://www.youtube.com/watch?v=-VZ4CjhYA4g" class="read-more">
+                See more <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+        <article>
+      
+          <div class="article-wrapper">
+            <figure>
+              <img src="/images/packets.jpeg" alt="" />
+            </figure>
+            <div class="article-body">
+              <h2>Join the Chat!</h2>
+              <p>
+                Have more thoughts then a Spicy sauce packet? Need to talk the last adventure you took your tastebuds on? Lets get the conversation started!
+              </p>
+              <a href="/posts" class="read-more">
+                Lets Go! <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
 
 
 <%- include('./partials/footer') %>
