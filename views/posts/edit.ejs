@@ -1,12 +1,12 @@
 <%- include('../partials/header') %>
-<body class="">
+<body class="show">
     <nav>
     <div class="collapse fs-5" id="navbarToggleExternalContent" >
       <div class="bg-dark p-7">
-        <h5 class="text-white h6">Collapsed content</h5>
-        <span class="text-muted fs-10;" class="navbar-header">Toggleable via the navbar brand.</span>
+        <h5 class="text-white h6"></h5>
+        <span class="text-muted fs-10;" class="navbar-header"></span>
         <a href="/">
-          <img src="/images/TB-Logo.svg" width="25px" height="25px" alt="">
+          <img src="/images/TB-Logo.svg" width="40px" height="40px" alt="">
         </a>
         <% if (user) { %>
           <a href="/posts" <%- title === 'Chat' ? 'class="active"' : '' %>>Chat</a>
@@ -25,23 +25,20 @@
       </div>
     </nav>
 
-<h1><%= title %></h1>
-<h1>Edit a Post</h1>
+    <section class="edit-page">
 
-<h1><%= title %></h1>
-
-<section>
-    <div>Title:</div>
-    <div><%= post.title %></div>
-    <div>Post</div>
+<section class="edit-message" >
+    <div>Edit Your Post</div><br>
+    <!-- <div><%= post.title %></div> -->
+    <div>Post:</div>
     <div><%= post.content %></div>
 </section>
 
 
     <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
-        <!-- Value attribute is being set to the comment's current text -->
-        <input name="content" value="<%= post.content %>">
-        <button type="submit">Edit Post</button>
+        <textarea name="content" id="" cols="30" rows="5" value=""><%= post.content %></textarea>
+        <button type="submit">Update</button>
       </form>
+    </section>
 
 <%- include('../partials/footer') %>

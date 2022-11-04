@@ -6,10 +6,52 @@ body {
 body.show {
   background-image: url('/images/tacowall.jpeg');
 }
+body.new {
+  background-image: url('/images/DeliciousDoodles-full.jpg');
+}
+body.index {
+	background-image: url('/images/DriveThruDelight-full.jpg');
+}
+nav > a {
+	padding: 60px;
+
+}
 a {
-  color: #00B7FF;
+  color: purple;
 }
 
+.salute {
+	font-family: 'Trade Winds';
+	grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  overflow-y: scroll;
+	color: yellow;	
+	font-size: 60px;
+	width:100%;
+	margin-bottom: 20px;
+
+
+	z-index:9999;
+}
+
+#post-page {
+  /* grid-area: main; */
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  /* background-color: #E8ECEB; */
+  /* padding: 10px; */
+  overflow-y: scroll;
+}
+
+.post-title {
+  font-size: 20px;
+}
 
 .login {
   display: flex;
@@ -20,13 +62,11 @@ a {
 
 .login img {
   height: 30px;
-}
+}	
 
 #show-page {
   display: inline-block;
-  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   font-size: 50px;
-  font-weight: bold;
   line-height: 50px;
   border-color: #eee #ddd #bbb;
   border-radius: 5px;
@@ -37,26 +77,55 @@ a {
   padding: 0 16px 16px 16px;
   max-width: 468px;
   background-color: white;
+  width: 500px;
 }
 
-.comment-user {
+#comment-page {
+  grid-area: main;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 10px;
+  overflow-y: scroll;
+  
+}
+.edit-page {
+	/* grid-area: main; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	align-content: center;
+  padding: 10px;
+  /* overflow-y: scroll; */
+} 
+
+.edit-message {
+	display: inline-block;
+  font-size: 50px;
+  line-height: 50px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 0 16px 16px 16px;
+  max-width: 468px;
+  background-color: white;
+  width: 500px;
+}
+.comment-user {
+	background-color: white;
 }
 
 #post-form {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   grid-gap: 1rem;
   margin-bottom: 2rem;
   position: relative;
-
-}
-#post-form input[type="submit"],
-#add-performer-form input[type="submit"]  {
-  width: 10rem;
-  grid-column: 2 / 3;
+  max-width: 468px;
 }
 
 table {
@@ -68,11 +137,41 @@ table {
 td, th {
   text-align: left;
   display: block;
+  width: 300px;
+  margin-top: 10px;
 }
 
 thead {
   display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 article {
   --img-scale: 1.001;
   --title-color: black;
@@ -94,6 +193,7 @@ article a::after {
   cursor: pointer;
   content: "";
 }
+
 
 /* basic article elements styling */
 article h2 {

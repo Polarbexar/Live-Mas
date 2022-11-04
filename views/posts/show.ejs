@@ -3,10 +3,10 @@
     <nav>
     <div class="collapse fs-5" id="navbarToggleExternalContent" >
       <div class="bg-dark p-7">
-        <h5 class="text-white h6">Collapsed content</h5>
-        <span class="text-muted fs-10;" class="navbar-header">Toggleable via the navbar brand.</span>
+        <h5 class="text-white h6"></h5>
+        <span class="text-muted fs-10;" class="navbar-header"></span>
         <a href="/">
-          <img src="/images/TB-Logo.svg" width="25px" height="25px" alt="">
+          <img src="/images/TB-Logo.svg" width="40px" height="40px" alt="">
         </a>
         <% if (user) { %>
           <a href="/posts" <%- title === 'Chat' ? 'class="active"' : '' %>>Chat</a>
@@ -24,22 +24,21 @@
         </button>
       </div>
     </nav>
-
+<section id="comment-page">
 <section id="show-page">
-    <div>Title:</div>
-    <div><%= post.title %></div>
-    <div>Post</div>
+    <div><strong>Title:</strong></div>
+    <div><%= post.title %></div><br>
+    <div> <strong>Post:</strong></div>
     <div><%= post.content %></div>
 </section>
 
-<h1>comment on a post</h1>
-<form id="post-form" action="/posts/<%= post._id %>/comments"  method="POST">
+<form class="form-control border-success" id="post-form" action="/posts/<%= post._id %>/comments"  method="POST">
     <textarea name="content" class="form-control border-success" id="" cols="10" rows="5" placeholder="Add your comment"></textarea>
     <button>submit</button>
 </form>
 
 <% if (post.comments.length) { %>
-<table>
+<table >
 <thead>
 <tr>
     <th>User</th>
@@ -51,10 +50,10 @@
 </thead>
 <tbody >
     <% post.comments.forEach(function(c) { %>
-    <tr class="comment-user">
-        <td class="align-baseline"><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" height="40px" ><%= c.userName %></td>
-        <td class="align-text-top"><%= c.createdAt.toLocaleDateString()%></td>
-        <td class="align-middle"><%- c.content.replaceAll('\n', '<br>') %></td>
+    <tr class="comment-user" class="form-control border-success">
+        <td><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" height="40px" ><%= c.userName %></td>
+        <td><%= c.createdAt.toLocaleDateString()%></td>
+        <td><%- c.content.replaceAll('\n', '<br>') %></td>
         <td>
             <% if (user?._id.equals(c.user)) { %>
                 <form action="/comments/<%= c._id%>?_method=DELETE" method="POST">
@@ -73,4 +72,5 @@
 <% } else { %>
     <h5>No Comments Yet</h5>
     <% } %>
+</section>
     <%- include('../partials/footer') %>
