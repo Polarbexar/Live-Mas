@@ -3,7 +3,7 @@
 From the risk takers to proud prudent, the weekend warriors to the weekend procrastinators, the programmers to the sane. For all those who grab life by the bell, welcome to Live Mas. A home for the Taco Bell community! Gather aficionados, share your Bell adventures!
 <br>
 <br>
-Live Mas is a soical media app outside of the bun. Post your thoughts, adventures, and ideas.
+Live Mas is a social media app outside of the bun. Post your thoughts, adventures, and ideas.
 
 # Screenshot
 
@@ -17,10 +17,14 @@ Live Mas is a soical media app outside of the bun. Post your thoughts, adventure
 - JavaScript
 - HTML
 - CSS
+- MongoDb
+- Mongoose
 
 # Getting Started
 
-[Lets do it, lets Live Mas](https://live-mas.herokuapp.com/)
+[Lets do it, click this link and lets Live Mas](https://live-mas.herokuapp.com/)
+
+[This is the Trello Board used for planning](https://trello.com/b/hWTjZSBh/live-mas)
 
 # Next Steps
 
